@@ -46,7 +46,7 @@ echo devmode /on    Opens Developer Mode
 if "%devmode%" == "1" (
 echo Devmode Only Commands:
 echo ddos           Self explanatory, ddoses a ip address
-echo ddos -t        same as ddos but it is slow and efficient
+echo ddos_-t        same as ddos but it is slow and efficient
 echo scanip         Self explanatory, Scans ips around your network
 echo devmode /off   Closes Developer Mode
 )
