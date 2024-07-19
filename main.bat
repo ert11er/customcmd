@@ -86,6 +86,9 @@ if "%devmode%" == "1" (
 cd %scriptdir%/Devmode
 )
 goto input
+
+
+REM functions
 :check_Permissions
 net session >nul 2>&1
 if %errorLevel% == 0 (
