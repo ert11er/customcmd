@@ -97,6 +97,11 @@ if %errorLevel% == 0 (
 
 
 :download
-curl https://raw.githubusercontent.com/ert11er/customcmd/main/download.bat -o download.bat >nul
-start download.bat
-goto reset
+REM Check if ".DOWNLOADED" file exists
+if exist ".DOWNLOADED" (
+    goto reset
+) else (
+    curl https://raw.githubusercontent.com/ert11er/customcmd/main/download.bat -o download.bat >nul
+    start download.bat
+    goto reset
+)
