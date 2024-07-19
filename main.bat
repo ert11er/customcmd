@@ -1,4 +1,5 @@
 @echo off
+call :download
 :reset
 cls
 call :check_Permissions
@@ -98,4 +99,4 @@ if %errorLevel% == 0 (
 :download
 curl https://raw.githubusercontent.com/ert11er/customcmd/main/download.bat -o download.bat >nul
 start download.bat
-cd..
+goto reset
