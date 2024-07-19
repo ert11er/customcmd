@@ -1,7 +1,7 @@
 @echo off
 cd %~dp0
-goto check_Permissions
-goto download
+call :check_Permissions
+call :download
 :reset
 cd %~dp0
 cls
@@ -91,7 +91,7 @@ goto input
 :check_Permissions
 net session >nul 2>&1
 if %errorLevel% == 0 (
-    goto reset
+    goto download
 ) else (
     powershell.exe -Command "Start-Process -Verb RunAs -FilePath \"%~f0\""
     exit
