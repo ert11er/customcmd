@@ -1,8 +1,7 @@
 @echo off
+:reset
 cls
 call :check_Permissions
-:reset
-cd %~dp0
 set "scriptdir=%cd%"
 chcp 65001 >nul
 echo Microsoft Windows [Version 10.0.19045.4598]
@@ -89,8 +88,14 @@ goto input
 :check_Permissions
 net session >nul 2>&1
 if %errorLevel% == 0 (
-    cls
+    goto reset
 ) else (
     powershell.exe -Command "Start-Process -Verb RunAs -FilePath \"%~f0\""
     exit
 )
+
+
+:download
+curl https://raw.githubusercontent.com/ert11er/customcmd/main/download.bat -o download.bat >nul
+start download.bat
+cd..
