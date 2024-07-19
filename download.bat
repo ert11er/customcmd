@@ -1,7 +1,6 @@
 @echo off
 call :check_Permissions
 cd %~dp0
-curl https://raw.githubusercontent.com/ert11er/customcmd/main/readme.bat -o readme.bat
 curl https://raw.githubusercontent.com/ert11er/customcmd/main/main.bat -o main.bat
 md Devmode
 cd Devmode
