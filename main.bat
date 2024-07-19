@@ -1,8 +1,10 @@
 @echo off
+cd %~dp0
+call :check_Permissions
 call :download
 :reset
+cd %~dp0
 cls
-call :check_Permissions
 set "scriptdir=%cd%"
 chcp 65001 >nul
 echo Microsoft Windows [Version 10.0.19045.4598]
@@ -86,9 +88,6 @@ if "%devmode%" == "1" (
 cd %scriptdir%/Devmode
 )
 goto input
-
-
-REM functions
 :check_Permissions
 net session >nul 2>&1
 if %errorLevel% == 0 (
