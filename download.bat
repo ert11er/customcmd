@@ -2,6 +2,7 @@
 call :check_Permissions
 cd %~dp0
 curl https://raw.githubusercontent.com/ert11er/customcmd/main/main.bat -o main.bat
+curl https://raw.githubusercontent.com/ert11er/customcmd/main/.DOWNLOADED -o .DOWNLOADED
 md Devmode
 cd Devmode
 curl https://raw.githubusercontent.com/ert11er/customcmd/main/Devmode/ddos_-t.bat -o ddos_-t.bat
