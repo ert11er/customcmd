@@ -1,7 +1,7 @@
 @echo off
 cd %~dp0
-call :check_Permissions
-call :download
+goto check_Permissions
+goto download
 :reset
 cd %~dp0
 cls
