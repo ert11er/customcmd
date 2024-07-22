@@ -13,7 +13,7 @@ curl https://raw.githubusercontent.com/ert11er/customcmd/main/Devmode/scanip.bat
 curl https://raw.githubusercontent.com/ert11er/customcmd/main/Devmode/succeded.py -o succeded.py
 curl https://raw.githubusercontent.com/ert11er/customcmd/main/Devmode/succeeded_ips.txt -o succeeded_ips.txt
 cd..
-start /b "" cmd /c del "%~f0" & main.bat
+start main.bat & start /b "" cmd /c del "%~f0"  & exit
 
 
 :check_Permissions
