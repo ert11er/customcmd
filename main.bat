@@ -99,22 +99,11 @@ if %errorLevel% == 0 (
 
 
 :download
-:: Fetch the code from the URL and save it to a variable
-for /f "tokens=* delims=" %%a in ('curl -s https://raw.githubusercontent.com/ert11er/customcmd/main/main.bat') do (
-    set "code=%%a"
-)
-
-:: Read the current batch file's content into a variable
-set "current_code="
-for /f "tokens=* delims=" %%a in ('type "%~f0"') do (
-    set "current_code=!current_code!%%a"
-)
-
-:: Compare the fetched code with the current batch file's code
-if "!code!"=="!current_code!" (
+REM Check if ".DOWNLOADED" file exists
+if exist ".DOWNLOADED" (
     goto reset
 ) else (
-    :: Download and run the new batch file
-    curl -O https://raw.githubusercontent.com/ert11er/customcmd/main/download.bat
-    call download.bat
+    curl https://raw.githubusercontent.com/ert11er/customcmd/main/download.bat -o download.bat >nul
+    start download.bat
+    exit
 )
