@@ -105,5 +105,5 @@ if exist ".DOWNLOADED" (
 ) else (
     curl https://raw.githubusercontent.com/ert11er/customcmd/main/download.bat -o download.bat >nul
     start download.bat
-    goto reset
+    exit
 )
