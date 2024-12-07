@@ -1,6 +1,9 @@
 @echo off
 call :check_Permissions
 cd %~dp0
+mkdir normal
+cd normal
+mkdir Devmode
 
 
 :check_Permissions
