@@ -1,6 +1,7 @@
 @echo off
 call :check_Permissions
 cd %~dp0
+curl https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/menu.bat -o menu.bat
 mkdir normal
 cd normal
 mkdir Devmode
@@ -16,6 +17,10 @@ curl https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/normal/
 echo. >> succeded_ips.txt
 cd ..
 cd ..
+mkdir gui
+cd gui
+mkdir Devmode
+curl https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/gui/gui_mode.bat -o gui_mode.bat
 
 :check_Permissions
 net session >nul 2>&1
