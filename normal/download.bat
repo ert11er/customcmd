@@ -2,12 +2,6 @@
 call :check_Permissions
 cd %~dp0
 
-
-
-
-
-
-
 :check_Permissions
 net session >nul 2>&1
 if %errorLevel% == 0 (
