@@ -6,7 +6,6 @@ if "%~1" == "" (
 )
 set "devmode=1"
 cd %~dp0
-REM call :download
 :reset
 cd %~dp0
 set "scriptdir=%cd%"
@@ -51,16 +50,5 @@ if "%devmode%" == "0" (
 if "%devmode%" == "1" (
     cd %scriptdir%/Devmode
 )
-
-:download
-REM the new files should be uploaded
-REM Check if ".DOWNLOADED" file exists
-REM if exist ".DOWNLOADED" (
-REM    goto reset
-REM ) else (
-REM     curl https://raw.githubusercontent.com/ert11er/customcmd/main/download.bat -o download.bat >nul
-REM     start download.bat
-REM     exit
-REM )
 
 :end
