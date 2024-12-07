@@ -24,7 +24,10 @@ cd gui
 curl https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/gui/gui_mode.bat -o gui_mode.bat
 mklink /D Devmode "%devmodefilepath%"
 cd..
-
+mkdir NOUI
+cd NOUI
+mkdir customcmd-cli
+cd customcmd-cli
 
 
 :check_Permissions
