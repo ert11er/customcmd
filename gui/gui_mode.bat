@@ -1,6 +1,5 @@
 @echo off
 cd %~dp0
-REM call :download
 :reset
 cd %~dp0
 set "scriptdir=%cd%"
@@ -92,14 +91,3 @@ goto succ
 :succ
 powershell -Command "& {Add-Type -AssemblyName System.Windows.Forms; Add-Type -AssemblyName System.Drawing; $notify = New-Object System.Windows.Forms.NotifyIcon; $notify.Icon = [System.Drawing.SystemIcons]::Information; $notify.Visible = $true; $notify.ShowBalloonTip(0, 'Customcmd', 'Success.', [System.Windows.Forms.ToolTipIcon]::None)}"
 goto input
-
-:download
-REM the new files should be uploaded
-REM Check if ".DOWNLOADED" file exists
-REM if exist ".DOWNLOADED" (
-REM    goto reset
-REM ) else (
-REM     curl https://raw.githubusercontent.com/ert11er/customcmd/main/download.bat -o download.bat >nul
-REM     start download.bat
-REM     exit
-REM )

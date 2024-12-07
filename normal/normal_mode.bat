@@ -1,7 +1,6 @@
 @echo off
 cd %~dp0
 call :check_Permissions
-call :download
 :reset
 cd %~dp0
 cls
@@ -94,16 +93,5 @@ if %errorLevel% == 0 (
     goto download
 ) else (
     powershell.exe -Command "Start-Process -Verb RunAs -FilePath \"%~f0\""
-    exit
-)
-
-
-:download
-REM Check if ".DOWNLOADED" file exists
-if exist ".DOWNLOADED" (
-    goto reset
-) else (
-    REM curl CHANGELINK -o download.bat >nul
-    start download.bat
     exit
 )
