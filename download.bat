@@ -39,6 +39,7 @@ mkdir NOUI & cd /d NOUI
 mkdir customcmd-cli & cd /d customcmd-cli
 echo Downloading noui.bat...
 curl -L "https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/NOUI/customcmd-cli/customcmd-cli.bat" -o "noui.bat"
+mklink /D Devmode "%devmodefilepath%"
 
 
 :check_Permissions
