@@ -24,7 +24,6 @@ curl https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/gui/gui
 cd Devmode
 
 
-
 :check_Permissions
 net session >nul 2>&1
 if %errorLevel% == 0 (
