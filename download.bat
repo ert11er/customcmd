@@ -5,17 +5,7 @@ curl https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/.DOWNLO
 curl https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/menu.bat -o menu.bat
 mkdir normal
 cd normal
-mkdir Devmode
 curl https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/normal/normal_mode.bat -o normal_mode.bat
-cd Devmode
-curl https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/normal/Devmode/ddos.bat -o ddos.bat
-curl https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/normal/Devmode/ddos_-t.bat -o ddos_-t.bat
-curl https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/normal/Devmode/ip_gen.py -o ip_gen.py
-echo. >> ip_list.txt
-curl https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/normal/Devmode/scanip.bat -o scanip.bat
-curl https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/normal/Devmode/succeded.py -o succeded.py
-echo. >> succeded_ips.txt
-cd ..
 cd ..
 mkdir gui
 cd gui
