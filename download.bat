@@ -28,7 +28,7 @@ mkdir Normal & cd /d Normal
 mklink /D Devmode "%devmodefilepath%"
 :: Download normal_mode.bat
 echo Downloading normal_mode.bat...
-curl -L "https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/Normal/normal_mode.bat" -o "normal_mode.bat"
+curl -L "https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/normal/normal_mode.bat" -o "normal_mode.bat"
 cd /d ..
 mkdir GUI & cd /d GUI
 :: Download gui.bat
