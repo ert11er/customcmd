@@ -1,6 +1,7 @@
 @echo off
 call :check_Permissions
 cd %~dp0
+download.bat
 echo 1. normal mode
 echo 2. gui mode
 set /p input="Select your menu:"
