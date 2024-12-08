@@ -2,7 +2,7 @@
 call :check_Permissions
 cd %~dp0
 if NOT exist .DOWNLOADED (
-    if NOT exist download.bat(
+    if NOT exist download.bat (
         curl https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/download.bat -o download.bat
     )
     start download.bat
