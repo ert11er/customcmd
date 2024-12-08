@@ -45,7 +45,7 @@ echo Downloading noui.bat...
 curl -L "https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/NOUI/customcmd-cli/customcmd-cli.bat" -o "customcmd-cli.bat" >nul
 mklink /D Devmode "%devmodefilepath%"
 
-
+exit
 :check_Permissions
 net session >nul 2>&1 & if %errorlevel% == 0 (
     cls
