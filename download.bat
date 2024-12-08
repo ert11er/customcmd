@@ -150,13 +150,12 @@ if %errorlevel% neq 0 (
 
 del "%zipfile%"
 
-REM Move the contents of the extracted folder up one level
-powershell -command "Move-Item -Path '%destination%\customcmd-main\*.*' -Destination '%destination%'"
+REM Move the contents of the extracted folder up one level, including hidden items
+powershell -command "Move-Item -Path '%destination%\customcmd-main\*.*' -Destination '%destination%' -Force; Move-Item -Path '%destination%\customcmd-main\.*' -Destination '%destination%' -Force"
 if %errorlevel% neq 0 (
     echo Error moving extracted files. Aborting.
     exit /b 1
 )
-
 
 rmdir /s /q "%destination%\customcmd-main"
 if %errorlevel% neq 0 (
@@ -164,7 +163,9 @@ if %errorlevel% neq 0 (
 )
 
 echo Download and extraction complete.
+
 goto :eof
+
 
 
 
