@@ -151,20 +151,11 @@ if %errorlevel% neq 0 (
 
 del "%zipfile%"
 
-REM Use Robocopy to move all contents, including subdirectories and hidden files
-robocopy "%destination%\%extractedFolder%" "%destination%" /e /move /xj
-
-if %errorlevel% leq 7 (  REM Robocopy exit codes <= 7 generally indicate success.
-    echo Files moved successfully.
-    rmdir /s /q "%destination%\%extractedFolder%"
-    if %errorlevel% neq 0 (
-        echo Error deleting directory. This might not be a critical error.
-    )
-
-) else (
-    echo Error moving files.  Robocopy Exit Code: %errorlevel% . Aborting.
-    exit /b 1
-)
+xcopy "%destination%\%extractedFolder%\*" "%destination%" /e /h /y
+if %errorlevel% neq 0 (
+  echo Error moving files. Aborting.
+  exit /b 1
+) 
 
 
 echo Download and extraction complete.
