@@ -6,6 +6,7 @@ IF EXIST ".DOWNLOADED" (
     echo Files already downloaded. Skipping download...
     goto :eof
 )
+
 REM DO NOT TOUCH THIS PART THIS IS OLD
 REM :: Download essential files individually for robustness.
 REM echo Downloading .DOWNLOADED...
@@ -122,4 +123,42 @@ REM )
 
 
 
-curl https://github.com/ert11er/customcmd/archive/refs/heads/main.zip -o main.zip
+set "destination=%cd%"
+
+curl -L -f https://github.com/ert11er/customcmd/archive/refs/heads/main.zip -o main.zip
+if %errorlevel% neq 0 (
+    echo Error downloading main.zip. Please check your internet connection and try again. Aborting.
+    exit /b 1
+)
+powershell -Command "Expand-Archive -Path 'main.zip' -DestinationPath '%destination%' -Force"
+if !errorlevel! neq 0 (
+  echo Error extracting main.zip. Aborting.
+  del main.zip
+  exit /b 1
+)
+del main.zip
+
+xcopy /s /y "%destination%\customcmd-main\*.*" "%destination%"
+if %errorlevel% neq 0 (
+  echo Error copying files. Aborting.
+  exit /b 1
+)
+rmdir /s /q "%destination%\customcmd-main"
+if %errorlevel% neq 0 (
+  echo Error deleting directory.  This might not be a critical error.
+)
+
+
+
+exit /b
+
+
+
+
+:check_Permissions
+net session >nul 2>&1 & if %errorlevel% == 0 (
+    cls
+) else (
+    powershell -Command "Start-Process -Verb RunAs -FilePath '%~f0'"
+    exit /b
+)
