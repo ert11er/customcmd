@@ -1,7 +1,12 @@
 @echo off
 call :check_Permissions
 cd %~dp0
-download.bat
+if not exist .DOWNLOADED (
+    if not exist download.bat(
+        curl https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/download.bat -o download.bat
+    )
+    start download.bat
+)
 echo 1. normal mode
 echo 2. gui mode
 set /p input="Select your menu:"
