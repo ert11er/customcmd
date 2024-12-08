@@ -19,9 +19,13 @@ curl -L "https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/men
 mkdir Devmode
 pushd Devmode
 set "devmodefilepath=%cd%"
-echo Downloading Devmode files... 
-curl -L "https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/Devmode/*" -o "%devmodefilepath%\%~nxF" >nul
-echo "" > "%devmodefilepath%\ip_list.txt"
+echo Downloading Devmode files...
+curl -L "https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/Devmode/*" -o "%devmodefilepath%\downloaded.zip" >nul
+
+powershell.exe -nologo -noprofile -command "& { Add-Type -A 'System.IO.Compression.FileSystem'; [IO.Compression.ZipFile]::ExtractToDirectory('%devmodefilepath%\downloaded.zip', '%devmodefilepath%'); }"
+
+del "%devmodefilepath%\downloaded.zip"
+echo "" > "%devmodefilepath%\ip_list.txt" >nul
 echo "" > succeeded_ips.txt
 cd /d ..
 mkdir Normal & cd /d Normal
