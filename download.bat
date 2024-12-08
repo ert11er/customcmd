@@ -19,7 +19,7 @@ curl -L "https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/men
 mkdir Devmode
 pushd Devmode
 set "devmodefilepath=%cd%"
-echo Downloading Devmode files...
+echo Downloading Devmode files... 
 curl -L "https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/Devmode/*" -o @
 echo "" > ip_list.txt
 echo "" > succeeded_ips.txt
@@ -28,17 +28,17 @@ mkdir Normal & cd /d Normal
 mklink /D Devmode "%devmodefilepath%"
 :: Download normal_mode.bat
 echo Downloading normal_mode.bat...
-curl -L "https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/normal/normal_mode.bat" -o "normal_mode.bat"
+curl -L "https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/normal/normal_mode.bat" -o "normal_mode.bat" >nul
 cd /d ..
 mkdir GUI & cd /d GUI
 :: Download gui.bat
 echo Downloading gui.bat...
-curl -L "https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/GUI/gui.bat" -o "gui.bat"
+curl -L "https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/GUI/gui.bat" -o "gui.bat" >nul
 cd /d ..
 mkdir NOUI & cd /d NOUI
 mkdir customcmd-cli & cd /d customcmd-cli
 echo Downloading noui.bat...
-curl -L "https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/NOUI/customcmd-cli/customcmd-cli.bat" -o "noui.bat"
+curl -L "https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/NOUI/customcmd-cli/customcmd-cli.bat" -o "customcmd-cli.bat" >nul
 mklink /D Devmode "%devmodefilepath%"
 
 
