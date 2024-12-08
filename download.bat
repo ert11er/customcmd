@@ -123,34 +123,48 @@ REM )
 
 
 
-set "destination=%cd%"
+@echo off
+call :check_Permissions
+cd /d "%~dp0"
 
-curl -L -f https://github.com/ert11er/customcmd/archive/refs/heads/main.zip -o main.zip
+IF EXIST ".DOWNLOADED" (
+    echo Files already downloaded. Skipping download...
+    goto :eof
+)
+
+set "destination=%cd%"
+set "zipfile=main.zip"
+
+curl -L -f "https://github.com/ert11er/customcmd/archive/refs/heads/main.zip" -o "%zipfile%"
 if %errorlevel% neq 0 (
-    echo Error downloading main.zip. Please check your internet connection and try again. Aborting.
+    echo Error downloading %zipfile%. Please check your internet connection and try again. Aborting.
     exit /b 1
 )
-powershell -Command "Expand-Archive -Path 'main.zip' -DestinationPath '%destination%' -Force"
-if !errorlevel! neq 0 (
-  echo Error extracting main.zip. Aborting.
-  del main.zip
-  exit /b 1
-)
-del main.zip
 
-xcopy /s /y "%destination%\customcmd-main\*.*" "%destination%"
+powershell -Command "Expand-Archive -Path '%zipfile%' -DestinationPath '%destination%' -Force"
 if %errorlevel% neq 0 (
-  echo Error copying files. Aborting.
+  echo Error extracting %zipfile%. Aborting.
+  del "%zipfile%"
   exit /b 1
 )
+
+del "%zipfile%"
+
+REM Move the contents of the extracted folder up one level
+powershell -command "Move-Item -Path '%destination%\customcmd-main\*.*' -Destination '%destination%'"
+if %errorlevel% neq 0 (
+    echo Error moving extracted files. Aborting.
+    exit /b 1
+)
+
+
 rmdir /s /q "%destination%\customcmd-main"
 if %errorlevel% neq 0 (
-  echo Error deleting directory.  This might not be a critical error.
+  echo Error deleting directory. This might not be a critical error.
 )
 
-
-
-exit /b
+echo Download and extraction complete.
+goto :eof
 
 
 
