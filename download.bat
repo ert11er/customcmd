@@ -134,6 +134,7 @@ IF EXIST ".DOWNLOADED" (
 
 set "destination=%cd%"
 set "zipfile=main.zip"
+set "extractedFolder=customcmd-main"
 
 curl -L -f "https://github.com/ert11er/customcmd/archive/refs/heads/main.zip" -o "%zipfile%"
 if %errorlevel% neq 0 (
@@ -150,25 +151,26 @@ if %errorlevel% neq 0 (
 
 del "%zipfile%"
 
-REM Move the contents of the extracted folder up one level, including hidden items
-powershell -command "Move-Item -Path '%destination%\customcmd-main\*.*' -Destination '%destination%' -Force; Move-Item -Path '%destination%\customcmd-main\.*' -Destination '%destination%' -Force"
-if %errorlevel% neq 0 (
-    echo Error moving extracted files. Aborting.
+REM Use Robocopy to move all contents, including subdirectories and hidden files
+robocopy "%destination%\%extractedFolder%" "%destination%" /e /move /xj
+
+if %errorlevel% leq 7 (  REM Robocopy exit codes <= 7 generally indicate success.
+    echo Files moved successfully.
+    rmdir /s /q "%destination%\%extractedFolder%"
+    if %errorlevel% neq 0 (
+        echo Error deleting directory. This might not be a critical error.
+    )
+
+) else (
+    echo Error moving files.  Robocopy Exit Code: %errorlevel% . Aborting.
     exit /b 1
 )
 
-rmdir /s /q "%destination%\customcmd-main"
-if %errorlevel% neq 0 (
-  echo Error deleting directory. This might not be a critical error.
-)
 
 echo Download and extraction complete.
+>".DOWNLOADED" echo.  REM Create an empty .DOWNLOADED marker file
 
 goto :eof
-
-
-
-
 
 :check_Permissions
 net session >nul 2>&1 & if %errorlevel% == 0 (
