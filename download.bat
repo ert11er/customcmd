@@ -20,8 +20,8 @@ mkdir Devmode
 pushd Devmode
 set "devmodefilepath=%cd%"
 echo Downloading Devmode files... 
-curl -L "https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/Devmode/*" -o "%~dp0Devmode\%~nxF"
-echo "" > ip_list.txt
+curl -L "https://raw.githubusercontent.com/ert11er/customcmd/refs/heads/main/Devmode/*" -o "%devmodefilepath%\%~nxF" >nul
+echo "" > "%devmodefilepath%\ip_list.txt"
 echo "" > succeeded_ips.txt
 cd /d ..
 mkdir Normal & cd /d Normal
