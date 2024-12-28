@@ -144,22 +144,21 @@ if %errorlevel% neq 0 (
 
 powershell -Command "Expand-Archive -Path '%zipfile%' -DestinationPath '%destination%' -Force"
 if %errorlevel% neq 0 (
-  echo Error extracting %zipfile%. Aborting.
-  del "%zipfile%"
-  exit /b 1
+    echo Error extracting %zipfile%. Aborting.
+    del "%zipfile%"
+    exit /b 1
 )
 
 del "%zipfile%"
 
 xcopy "%destination%\%extractedFolder%\*" "%destination%" /e /h /y
 if %errorlevel% neq 0 (
-  echo Error moving files. Aborting.
-  exit /b 1
-) 
-
+    echo Error moving files. Aborting.
+    exit /b 1
+)
 
 echo Download and extraction complete.
->".DOWNLOADED" echo.  REM Create an empty .DOWNLOADED marker file
+>".DOWNLOADED" echo.
 
 goto :eof
 
