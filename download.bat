@@ -157,8 +157,18 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
+cd Devmode
+set "dev=%cd%"
+cd..
+cd normal
+mklink Devmode "%dev%"
+cd..
+cd gui
+mklink Devmode "%dev%"
+cd..
+
 echo Download and extraction complete.
->".DOWNLOADED" echo.
+echo. >> ".DOWNLOADED"
 
 goto :eof
 
